@@ -9,25 +9,16 @@
 
     flex-wrap: wrap;
 
-    min-height: 72vh;
-    width: 100%;
+    min-height: 40vh;
+    width: 70vh;
 
     transition: 1s;
-    padding: 20px;
+    padding: 40px;
+    margin: 100px;
 }
 
 .displayContainer{
-    width: 100%;
-    overflow: hidden;
-    min-height: 72vh;
-    background: #ffffff;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    border-radius: 15px;
-    border: 0.5px solid rgb(134, 134, 134);
-    transition: 1s;
-    padding: 20px;
+
 }
 
 .text{
@@ -35,18 +26,3 @@
 }
 
 
-/*
-.box {
-  width: 100%;
-  overflow: hidden;
-  min-height: 72vh;
-  background: #ffffff;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  border-radius: 15px;
-  border: 0.5px solid rgb(134, 134, 134);
-  transition: 1s;
-  padding: 20px;
-}
-*/

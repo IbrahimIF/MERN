@@ -7,7 +7,7 @@ function Button() {
   const [text, setText] = useState('');
 
 
-  const handleUserSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     fetch('http://localhost:4000/Reacr-MongoDB', {
       method: 'POST',
@@ -22,25 +22,41 @@ function Button() {
 
 
   return (
-    <div className="buttonArea">
+    <>
+    
+    <div className="buttonArea" onSubmit={handleSubmit}>
+      <form>
 
-      <form onSubmit={handleUserSubmit}>
-        <input
-          type="text"
-          placeholder="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="text"
+        <div class="input-group">
+          <input required="" type="text" name="text" autocomplete="off" class="input"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label class="user-label">First Name</label>
+
+        </div>
+      </form>
+
+      <form>
+
+        <div class="input-group">
+
+        <input required="" type="text" name="text" autocomplete="off" class="input"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
+        <label class="user-label">First Name</label>
         <button type="submit">Add User</button>
-      </form>
 
+        </div>
+
+        <div class="relative">
+  <input class="input-cal input-base" id="input" placeholder="" type="text"/>
+  <label id="label-input">Name</label>
+</div>
+      </form>
     </div>
+    </>
   );
 }
 
