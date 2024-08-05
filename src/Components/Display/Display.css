@@ -1,0 +1,52 @@
+.displayArea{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+
+    background: #000000;
+    border: 0.5px solid #525252;
+    border-radius: 15px;
+
+    flex-wrap: wrap;
+
+    min-height: 72vh;
+    width: 100%;
+
+    transition: 1s;
+    padding: 20px;
+}
+
+.displayContainer{
+    width: 100%;
+    overflow: hidden;
+    min-height: 72vh;
+    background: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 15px;
+    border: 0.5px solid rgb(134, 134, 134);
+    transition: 1s;
+    padding: 20px;
+}
+
+.text{
+    color: rgb(255, 255, 255);
+}
+
+
+/*
+.box {
+  width: 100%;
+  overflow: hidden;
+  min-height: 72vh;
+  background: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 15px;
+  border: 0.5px solid rgb(134, 134, 134);
+  transition: 1s;
+  padding: 20px;
+}
+*/
