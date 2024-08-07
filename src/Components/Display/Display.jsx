@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
 import './Display.css';
 
-function Display() {
+function Display({ isSent, setIsSent }) {
   const [data, setData] = useState([]);
-  const [name, setName] = useState('');
-  const [text, setText] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
 
-  const fetchUsers = () => {
+  const fetchData = () => {
     fetch('http://localhost:4000/Reacr-MongoDB')
       .then(response => response.json())
-      .then(data => {
-        if (data.length === 0) {
-          setErrorMessage('No users found.');
+      .then(fetchedData => {
+        if (fetchedData.length === 0 ) {
+          setErrorMessage('No data found.');
+          setData([]);
         } else {
-          setData(data);
+          setData(fetchedData);
+          setErrorMessage('');
         }
         setIsLoading(false);
       })
@@ -27,11 +27,22 @@ function Display() {
   };
 
   useEffect(() => {
-    fetchUsers();
+    if (isSent) {
+      fetchData(); // Re-fetch data when the data is sent
+      setTimeout(() => setIsSent(false), 3000); // Hide the confirmation message after 3 seconds
+    }
+  }, [isSent, setIsSent]);
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   if (isLoading) {
     return <div className="displayContainer"><div className="loadingContainer"><div>Loading...</div></div></div>;
+  }
+
+  if (isSent) {
+    return <div className="displayContainer"><div className="displayArea"><div style={{transition: "1s" }}>Updating...</div></div></div>;
   }
 
 

@@ -5,8 +5,7 @@ import { faUpload }  from '@fortawesome/free-solid-svg-icons';
 
 
 
-function Button() {
-  const [data, setData] = useState([]);
+function Button({onDataSent}) {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
 
@@ -21,15 +20,15 @@ function Button() {
       body: JSON.stringify({ name, text })
     })
     .then(response => response.json())
-    .then(newData => setData([...data, newData]));
+    .then(newData => { onDataSent(); });
   };
 
 
   return (
     <>
     
-    <div className="buttonContainer" onSubmit={handleSubmit}>
-      <form>
+    <div className="buttonContainer">
+      <form onSubmit={handleSubmit}>
         <div className="inputContainer">
           <div class="input-Animated">
             <input type="text" name="text" class="input" placeholder="Enter Name"

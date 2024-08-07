@@ -8,13 +8,18 @@ import Logo from './Components/Logos/Logo';
 import './App.css';
 
 function App() {
+  const [isSent, setIsSent] = useState(false);
+
+  const handleDataSent = () =>{
+    setIsSent(true);
+  }
 
   return (
     <>
     <div className="App">
       <Logo />
-      <Display />
-      <Button/>
+      <Display isSent={isSent} setIsSent={setIsSent} />
+      <Button onDataSent={handleDataSent}/>
       <Link/>
     </div>
     </>
