@@ -31,26 +31,26 @@ function Display() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="displayContainer"><div className="loadingContainer"><div>Loading...</div></div></div>;
   }
 
 
   return (
     <> 
-    <div className="displayArea">
-    {errorMessage ? (
-          <div className="error">{errorMessage}</div>
-        ) : (
-      
-      <ul className="text">
-        {data.map(item => (
-          <li key={item._id}>{item.name}: {item.text}</li>
-        ))}
-      </ul>
-        )}
-
-    </div>
-    
+      <div className="displayContainer">
+        <div className="displayArea">
+        {errorMessage ? (
+              <div className="error">{errorMessage}</div>
+            ) : (
+  
+          <ul className="text">
+            {data.map(item => (
+              <li key={item._id}>{item.name}: {item.text}</li>
+            ))}
+          </ul>
+            )}
+        </div>
+      </div>
     </>
   );
 }
