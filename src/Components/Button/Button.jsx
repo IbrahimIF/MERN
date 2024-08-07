@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import './Button.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload }  from '@fortawesome/free-solid-svg-icons';
+
+
 
 function Button() {
   const [data, setData] = useState([]);
@@ -45,7 +49,7 @@ function Button() {
 
         </div>
         <div className="submitButtonContainer">
-        <button type="submit"> Button </button>
+        <button type="submit"> <FontAwesomeIcon icon={faUpload} /> &nbsp; Send </button>
         </div>
       </form>
     </div>

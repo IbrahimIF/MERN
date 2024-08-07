@@ -8,7 +8,7 @@ export default class Link extends Component {
       <div className="linkContainer">
         <ul class="example-2">
         <li class="icon-content">
-          <a href="https://www.github.com/" aria-label="GitHub" data-social="github">
+          <a href="https://github.com/IbrahimIF/MERN" aria-label="GitHub" data-social="github">
             <div class="filled"></div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
