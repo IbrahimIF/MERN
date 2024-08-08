@@ -12,7 +12,7 @@ function Button({onDataSent}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:4000/Reacr-MongoDB', {
+    fetch('https://react-to-mongodb.vercel.app/', { //http://localhost:4000/Reacr-MongoDB
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

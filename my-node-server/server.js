@@ -9,7 +9,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT; 
 
-app.use(cors());
+app.use(cors({
+  origin: ['https://react-to-mongodb.vercel.app/']
+}));
 app.use(express.json());
 
 // Connect to MongoDB Atlas using connection string from .env
