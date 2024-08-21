@@ -30,20 +30,20 @@ function Button({onDataSent}) {
     <div className="buttonContainer">
       <form onSubmit={handleSubmit}>
         <div className="inputContainer">
-          <div className="input-Animated">
-            <input type="text" name="text" className="input" placeholder="Enter Name"
+          <div class="input-Animated">
+            <input type="text" name="text" class="input" placeholder="Enter Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             />
-            <div className="highlight"></div>
+            <div class="highlight"></div>
           </div>
 
-          <div className="input-Animated">
-            <input type="text" name="text" className="input" placeholder="Enter Text"
+          <div class="input-Animated">
+            <input type="text" name="text" class="input" placeholder="Enter Text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             />
-            <div className="highlight"></div>
+            <div class="highlight"></div>
           </div>
 
         </div>
