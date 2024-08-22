@@ -1,2 +1,2 @@
 # react-mongodb
- A basic react project created that is connected to a mongoDB atlas database colleciton for the purpose of sending and receving data.
+ A basic react project created linked to a mongoDB atlas database colleciton to display and send data
