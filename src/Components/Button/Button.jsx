@@ -12,7 +12,7 @@ function Button({onDataSent}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('https://react-to-mongodb.vercel.app/', { //http://localhost:4000/Reacr-MongoDB
+    fetch('/api/Reacr-MongoDB', { //https://react-to-mongodb.vercel.app/ //http://localhost:4000/Reacr-MongoDB
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -30,20 +30,20 @@ function Button({onDataSent}) {
     <div className="buttonContainer">
       <form onSubmit={handleSubmit}>
         <div className="inputContainer">
-          <div class="input-Animated">
-            <input type="text" name="text" class="input" placeholder="Enter Name"
+          <div className="input-Animated">
+            <input type="text" name="text" className="input" placeholder="Enter Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             />
-            <div class="highlight"></div>
+            <div className="highlight"></div>
           </div>
 
-          <div class="input-Animated">
-            <input type="text" name="text" class="input" placeholder="Enter Text"
+          <div className="input-Animated">
+            <input type="text" name="text" className="input" placeholder="Enter Text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             />
-            <div class="highlight"></div>
+            <div className="highlight"></div>
           </div>
 
         </div>

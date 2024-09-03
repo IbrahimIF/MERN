@@ -4,15 +4,16 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 // Load environment variables from .env file
-dotenv.config();
+dotenv.config({ path: '../.env' });
 
 const app = express();
-const PORT = process.env.PORT || 4000 ; // Use the port from .env or default to 5000
+/*const PORT = process.env.PORT*/
 
+/*
 app.use(cors({
-  origin: ['https://react-to-mongodb.vercel.app/']
+  origin: ['http://localhost:4000', 'https://react-to-mongodb.vercel.app/']
 }));
-app.use(express.json());
+*/
 
 // Connect to MongoDB Atlas using connection string from .env
 mongoose.connect(process.env.MONGODB_URI)
@@ -23,8 +24,12 @@ mongoose.connect(process.env.MONGODB_URI)
     console.error('Error connecting to MongoDB Atlas', err);
   });
 
+app.use(cors());
+app.use(express.json());
+
+
                                                                               //Schema
-  const Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // Define the schema and model 
 const DataSchema = new Schema({
@@ -37,7 +42,7 @@ const DataSchema = new Schema({
 
 
 // Route to get named Collection from Database
-app.get('/Reacr-MongoDB', async (req, res) => {
+app.get('/api/Reacr-MongoDB', async (req, res) => {
     try {
       const collection = await DataModel.find();
       res.json(collection);
@@ -48,7 +53,7 @@ app.get('/Reacr-MongoDB', async (req, res) => {
   
 
 // Route to post data
-app.post('/Reacr-MongoDB', async (req, res) => {
+app.post('/api/Reacr-MongoDB', async (req, res) => {
     const newData = new DataModel({
       name: req.body.name,
       text: req.body.text,
@@ -62,7 +67,19 @@ app.post('/Reacr-MongoDB', async (req, res) => {
     }
   });
 
-// Start the server
+
+  if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 4000;
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  }
+
+  /*
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+*/
+
+// Export the Express app as a module
+module.exports = app;

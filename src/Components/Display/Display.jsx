@@ -8,7 +8,7 @@ function Display({ isSent, setIsSent }) {
 
 
   const fetchData = () => {
-    fetch('https://react-to-mongodb.vercel.app/') //http://localhost:4000/Reacr-MongoDB
+    fetch('/api/Reacr-MongoDB') //https://react-to-mongodb.vercel.app/ //http://localhost:4000/Reacr-MongoDB
       .then(response => response.json())
       .then(fetchedData => {
         if (fetchedData.length === 0 ) {
