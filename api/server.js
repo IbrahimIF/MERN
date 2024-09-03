@@ -1,3 +1,5 @@
+
+const serverless = require('serverless-http')
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -82,4 +84,4 @@ app.listen(PORT, () => {
 */
 
 // Export the Express app as a module
-module.exports = app;
+module.exports = serverless(app);
