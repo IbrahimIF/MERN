@@ -10,7 +10,7 @@
 
 ##### **Description**:
 This is a very simple project that sends and receives data to my mongoDB atlas collection, utilising express and node.
-An idea based on the concept of MERN which stands for MongoDB, Express, React and Nodejs. this project is a showcase of MERN + vite which is then deployed onto vercel.
+A project utilising the MERN stack which stands for MongoDB, Express, React and Nodejs, this project is also using vite with MERN stack which has been deployed on vercel.
 
 -----
 
