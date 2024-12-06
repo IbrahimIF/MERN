@@ -6,12 +6,17 @@ function Display({ isSent, setIsSent }) {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
-
   const fetchData = () => {
-    fetch('/api/Reacr-MongoDB') //https://react-to-mongodb.vercel.app/ //http://localhost:4000/Reacr-MongoDB
+    // Dynamic base URL for API requests
+    const BASE_URL =
+    process.env.NODE_ENV === 'production'
+      ? 'https://mern-topaz-xi.vercel.app'
+      : 'http://localhost:5000';
+
+    fetch(`${BASE_URL}/api/React-MongoDB`)
       .then(response => response.json())
       .then(fetchedData => {
-        if (fetchedData.length === 0 ) {
+        if (fetchedData.length === 0) {
           setErrorMessage('No data found.');
           setData([]);
         } else {
@@ -23,6 +28,7 @@ function Display({ isSent, setIsSent }) {
       .catch(error => {
         setErrorMessage('Error fetching data');
         setIsLoading(false);
+        console.error('Fetch error:', error);
       });
   };
 
@@ -38,31 +44,29 @@ function Display({ isSent, setIsSent }) {
   }, []);
 
   if (isLoading) {
-    return <div className="displayContainer"><div className="loadingContainer"><div>Loading...</div></div></div>;
+    return (
+      <div className="displayContainer">
+        <div className="loadingContainer">
+          <div>Loading...</div>
+        </div>
+      </div>
+    );
   }
-
-  if (isSent) {
-    return <div className="displayContainer"><div className="displayArea"><div style={{transition: "1s" }}>Updating...</div></div></div>;
-  }
-
 
   return (
-    <> 
-      <div className="displayContainer">
-        <div className="displayArea">
+    <div className="displayContainer">
+      <div className="displayArea">
         {errorMessage ? (
-              <div className="error">{errorMessage}</div>
-            ) : (
-  
+          <div className="error">{errorMessage}</div>
+        ) : (
           <ul className="text">
             {data.map(item => (
               <li key={item._id}>{item.name}: {item.text}</li>
             ))}
           </ul>
-            )}
-        </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
 
