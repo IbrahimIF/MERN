@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
 // Load environment variables
 dotenv.config();
@@ -11,7 +12,7 @@ const app = express();
 // Middleware
 app.use(cors({
   origin: [
-    'http://localhost:5173', 
+    'http://localhost:5173',
     'https://mern-topaz-xi.vercel.app'
   ]
 }));
@@ -21,9 +22,13 @@ app.use(express.json());
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000,
 })
-.then(() => console.log('Connected to MongoDB Atlas'))
-.catch((err) => console.error('Error connecting to MongoDB Atlas', err));
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch((err) => {
+    console.error('Error connecting to MongoDB Atlas', err);
+    process.exit(1);
+  });
 
 // Schema and Model
 const DataSchema = new mongoose.Schema({
@@ -63,9 +68,20 @@ app.post('/api/React-MongoDB', async (req, res) => {
   }
 });
 
-// Fallback route for undefined endpoints
-app.use((req, res) => {
+// Handle undefined API routes
+app.use((req, res, next) => {
+  if (!req.path.startsWith('/api')) {
+    return next();
+  }
   res.status(404).send('Endpoint not found.');
+});
+
+// Serve static files from the React app
+app.use(express.static(path.join(process.cwd(), 'public')));
+
+// Catch-all handler to send React's index.html for any other route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
 });
 
 // Server configuration for local development
