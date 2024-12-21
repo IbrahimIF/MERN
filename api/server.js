@@ -39,7 +39,7 @@ const DataModel = mongoose.model('collection', DataSchema);
 
 // Routes
 // Root route for checking server status
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Server is running. Use /api/React-MongoDB to interact with the API.');
 });
 
@@ -77,11 +77,11 @@ app.use((req, res, next) => {
 });
 
 // Serve static files from the React app
-app.use(express.static(path.join(process.cwd(), 'public')));
+app.use(express.static(path.join(process.cwd(), 'src')));
 
 // Catch-all handler to send React's index.html for any other route
 app.get('*', (req, res) => {
-  res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
+  res.sendFile(path.join(process.cwd(), 'src', 'index.html'));
 });
 
 // Server configuration for local development
