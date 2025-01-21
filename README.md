@@ -1,6 +1,7 @@
 <div align="center">
  
-![image](https://github.com/user-attachments/assets/1152b2e2-cf2e-46e6-84b6-f6b931469c11)
+![MERN banner](https://github.com/user-attachments/assets/620b6e7f-0776-46ec-8d58-ccffe7b85071)
+
 
 </div>
 
@@ -45,7 +46,7 @@ Below is the project link, currently live on Vercel:
 [MERN + Vite](https://mern-topaz-xi.vercel.app/).
 
 > [!NOTE] 
-> The project currently live on vercel isn't functioning as intended with the MongoDB cluster.
+> The project currently live on vercel isn't functioning as intended with the MongoDB cluster, However works fine locally.
 > 
 > Updates will be made overtime to rectify this problem.
 
