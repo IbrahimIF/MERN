@@ -4,8 +4,6 @@
   "version": "0.0.0",
   "proxy": "http://localhost:4000",
   "type": "module",
-
-
   "@comment scripts": [
     "server : node api/server.js",
     "build : react-scripts build",
@@ -15,12 +13,10 @@
   ],
   "scripts": {
     "dev": "vite",
-    
     "start": "concurrently \"npm run server\" \"npm run dev\"",
-    "build": "vite build", 
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
-    
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
@@ -30,7 +26,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongoose": "^8.5.2",
+    "mongoose": "^8.9.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "vercel": "^35.2.3"
