@@ -15,7 +15,10 @@ app.use(cors({
     'http://localhost:5173', //localhost
     'https://mern-frontend-kappa-drab.vercel.app/', //vercel link
     'https://mern-i8eg.onrender.com/' //render.com link
-  ]
+  ],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 }));
 app.use(express.json());
 
