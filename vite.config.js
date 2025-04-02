@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       // This proxies API calls to your backend during development
-      '/api': 'http://localhost:4000'
+      '/api': 'http://localhost:5000'
     }
   }
 })
