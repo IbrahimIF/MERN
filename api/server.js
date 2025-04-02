@@ -12,59 +12,62 @@ const app = express();
 // Middleware
 app.use(cors({
   origin: [
-    'http://localhost:5173',
-    'https://mern-topaz-xi.vercel.app'
+    'http://localhost:5173', //localhost
+    'https://mern-frontend-kappa-drab.vercel.app/', //vercel link
+    'https://mern-i8eg.onrender.com/' //render.com link
   ]
 }));
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000,
-})
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch((err) => {
     console.error('Error connecting to MongoDB Atlas', err);
     process.exit(1);
   });
 
+// endpoints variable
+const MESSAGE_ROUTE = '/api/data';
+
 // Schema and Model
-const DataSchema = new mongoose.Schema({
+const DataSchema = new mongoose.Schema({ 
   name: String,
   text: String,
 });
-const DataModel = mongoose.model('collection', DataSchema);
+const DataModel = mongoose.model('Message', DataSchema, 'Add-data'); //mongodb collection name
 
 // Routes
+
 // Root route for checking server status
 app.get('/api', (req, res) => {
-  res.send('Server is running. Use /api/React-MongoDB to interact with the API.');
+  res.send('Server is running. Use /api/data to interact with the API.');
 });
 
 // GET route to fetch data
-app.get('/api/React-MongoDB', async (req, res) => {
+app.get(MESSAGE_ROUTE, async (req, res) => {
   try {
     const collection = await DataModel.find();
     res.json(collection);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ error: error.message });
   }
 });
 
 // POST route to add data
-app.post('/api/React-MongoDB', async (req, res) => {
+app.post(MESSAGE_ROUTE, async (req, res) => {
+  /* Using more simplified routes
   const newData = new DataModel({
     name: req.body.name,
     text: req.body.text,
   });
-
+  */
   try {
-    const savedData = await newData.save();
+    const savedData = new DataModel(req.body);
+    await savedData.save();
     res.json(savedData);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -77,14 +80,14 @@ app.use((req, res, next) => {
 });
 
 // Serve static files from the React app
-app.use(express.static(path.join(process.cwd(), 'src')));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(process.cwd(), 'src')));
+  app.get('*', (req, res) => { // Catch-all handler to send React's index.html for any other route
+    res.sendFile(path.join(process.cwd(), 'src', 'index.html'));
+  });
+}
 
-// Catch-all handler to send React's index.html for any other route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(process.cwd(), 'src', 'index.html'));
-});
-
-// Server configuration for local development
+// Server configuration
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

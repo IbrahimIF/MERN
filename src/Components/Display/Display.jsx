@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_BASE_URL, API_ENDPOINTS } from '../../config';
 import './Display.css';
 
 function Display({ isSent, setIsSent }) {
@@ -7,13 +8,8 @@ function Display({ isSent, setIsSent }) {
   const [errorMessage, setErrorMessage] = useState('');
 
   const fetchData = () => {
-    // Dynamic base URL for API requests
-    const BASE_URL =
-    process.env.NODE_ENV === 'production'
-      ? 'https://mern-topaz-xi.vercel.app'
-      : 'http://localhost:5000';
 
-    fetch(`${BASE_URL}/api/React-MongoDB`)
+    fetch(`${API_BASE_URL}${API_ENDPOINTS.MESSAGES}`)
       .then(response => response.json())
       .then(fetchedData => {
         if (fetchedData.length === 0) {

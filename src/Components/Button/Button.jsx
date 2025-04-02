@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import './Button.css';
+import { API_BASE_URL, API_ENDPOINTS } from '../../config';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload }  from '@fortawesome/free-solid-svg-icons';
-
-
+import './Button.css';
 
 function Button({onDataSent}) {
   const [name, setName] = useState('');
@@ -12,18 +12,12 @@ function Button({onDataSent}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
 
-// Determine API base URL dynamically
-const BASE_URL =
-process.env.NODE_ENV === 'production'
-  ? 'https://mern-topaz-xi.vercel.app'
-  : 'http://localhost:5000';
-
 const handleSubmit = (e) => {
 e.preventDefault();
 setIsSubmitting(true);
 setStatusMessage('');
 
-fetch(`${BASE_URL}/api/React-MongoDB`, {
+fetch(`${API_BASE_URL}${API_ENDPOINTS.MESSAGES}`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
