@@ -9,7 +9,8 @@ function Display({ isSent, setIsSent }) {
 
   const fetchData = () => {
 
-    fetch(`${API_BASE_URL}${API_ENDPOINTS.MESSAGES}`)
+    fetch(`${API_BASE_URL}${API_ENDPOINTS.MESSAGES}`, {
+    })
       .then(response => response.json())
       .then(fetchedData => {
         if (fetchedData.length === 0) {
