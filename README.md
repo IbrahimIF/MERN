@@ -43,12 +43,7 @@ To run this project locally, you'll need to have Node.js and npm installed on yo
 ## Demo:
 Below is the project link, currently live on Vercel:
 
-[MERN + Vite](https://mern-topaz-xi.vercel.app/).
-
-> [!NOTE] 
-> The project currently live on vercel isn't functioning as intended with the MongoDB cluster, However works fine locally.
-> 
-> Updates will be made overtime to rectify this problem.
+[MERN + Vite](https://mern-frontend-kappa-drab.vercel.app/).
 
 ----
 ## Features:
