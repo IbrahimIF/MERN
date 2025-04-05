@@ -1,13 +1,19 @@
 <div align="center">
  
 ![MERN banner](https://github.com/user-attachments/assets/620b6e7f-0776-46ec-8d58-ccffe7b85071)
-
+<!-- 
+![Project Status](https://img.shields.io/badge/status-in_progress-brightgreen?)
+![Static Badge](https://img.shields.io/badge/made_with-React_+_Vite-blue)
+![Porject Status](https://custom-icon-badges.demolab.com/github/last-commit/IbrahimIF/custom-icon-badges?logo=history&logoColor=white)
+<img src="https://shields.io/badge/made-with%20%20bash-green?style=flat-square&color=d5c4a1&labelColor=1d2021&logo=gnu-bash">
+<img src=https://img.shields.io/badge/Maintained%3F-yes-green.svg></img>  
+-->
 
 </div>
 
-![Project Status](https://img.shields.io/badge/status-in_progress-brightgreen)
+![Poject Status](https://custom-icon-badges.demolab.com/badge/status-Completed-green?color=088404&labelColor=1d2021&logo=issue-closed&logoColor=white)
 
-![Static Badge](https://img.shields.io/badge/made_with-React_+_Vite-blue)
+![tech](https://custom-icon-badges.demolab.com/badge/made_with-React_+_Vite-blue?color=8fc8e6&labelColor=1d2021&logo=react&logoColor=blue)
 
 ##### **Description**:
 This is a very simple project that sends and receives data to my mongoDB atlas collection, utilising express and node.
